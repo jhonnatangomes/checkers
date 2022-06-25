@@ -10,8 +10,17 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/styled-components": "^5.1.25",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "esbuild": "^0.14.47",
-    "esbuild-runner": "^2.2.1"
+    "esbuild-runner": "^2.2.1",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "react": "^18.2.0",

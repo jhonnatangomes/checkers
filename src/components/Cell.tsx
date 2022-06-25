@@ -8,10 +8,11 @@ type StyledProps = {
 type Props = {
   noPieceAllowed?: boolean;
   children?: PieceType;
+  onClick?: () => unknown;
 };
-export default function Cell({ noPieceAllowed, children }: Props) {
+export default function Cell({ noPieceAllowed, children, onClick }: Props) {
   return (
-    <Td noPieceAllowed={noPieceAllowed} piece={children}>
+    <Td noPieceAllowed={noPieceAllowed} piece={children} onClick={onClick}>
       {children}
     </Td>
   );

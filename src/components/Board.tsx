@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
-import { createArray } from '../helpers';
+import React from 'react';
+import { BoardType } from '../types';
 import Cell from './Cell';
 import Piece from './Piece';
-const INITIAL_BOARD = createArray(8).map((_, i) =>
-  createArray(8).map((_, j) => {
-    if (!piecesAllowed(i, j)) return { piecesAllowed: false, piece: null };
-    if ([0, 1, 2].includes(i))
-      return { piecesAllowed: true, piece: <Piece color="red" /> };
-    if ([5, 6, 7].includes(i))
-      return { piecesAllowed: true, piece: <Piece color="black" /> };
-    return { piecesAllowed: true, piece: null };
-  })
-);
-export default function Board() {
-  const [board, setBoard] = useState(INITIAL_BOARD);
+type Props = {
+  board: BoardType;
+};
+export default function Board({ board }: Props) {
   return (
     <table>
       <tbody>
@@ -24,7 +16,13 @@ export default function Board() {
                 !cell.piecesAllowed ? (
                   <Cell noPieceAllowed key={`${i}-${j}`} />
                 ) : cell.piece ? (
-                  <Cell key={`${i}-${j}`}>{cell.piece}</Cell>
+                  <Cell key={`${i}-${j}`}>
+                    <Piece
+                      color={cell.piece.color}
+                      position={cell.piece.position}
+                      board={board}
+                    />
+                  </Cell>
                 ) : (
                   <Cell key={`${i}-${j}`} />
                 )
@@ -34,7 +32,4 @@ export default function Board() {
       </tbody>
     </table>
   );
-}
-function piecesAllowed(i: number, j: number) {
-  return (i % 2 === 0 && j % 2 !== 0) || (i % 2 !== 0 && j % 2 === 0);
 }
