@@ -1,7 +1,6 @@
 import React from 'react';
 import { BoardType } from '../types';
 import Cell from './Cell';
-import Piece from './Piece';
 type Props = {
   board: BoardType;
 };
@@ -16,13 +15,14 @@ export default function Board({ board }: Props) {
                 !cell.piecesAllowed ? (
                   <Cell noPieceAllowed key={`${i}-${j}`} />
                 ) : cell.piece ? (
-                  <Cell key={`${i}-${j}`}>
-                    <Piece
-                      color={cell.piece.color}
-                      position={cell.piece.position}
-                      board={board}
-                    />
-                  </Cell>
+                  <Cell
+                    key={`${i}-${j}`}
+                    piece={{
+                      position: cell.piece.position,
+                      isKing: cell.piece.isKing,
+                      color: cell.piece.color,
+                    }}
+                  ></Cell>
                 ) : (
                   <Cell key={`${i}-${j}`} />
                 )
